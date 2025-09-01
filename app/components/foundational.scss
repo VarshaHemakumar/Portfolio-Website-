@@ -1,0 +1,111 @@
+.foundational {
+  padding: 4rem 1.5rem;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+
+  &__title {
+    text-align: center;
+    font-weight: 200;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #b892ff, #8b5cf6, #60a5fa);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  &__desc {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: rgba(235, 235, 245, 0.7);
+    font-size: 1.05rem;
+  }
+}
+
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee {
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+
+  &__track {
+    display: flex;
+    gap: 2rem;
+    animation: scroll-left 30s linear infinite;
+    width: max-content;
+  }
+}
+
+
+.tile {
+  min-width: 420px;   
+  max-width: 460px;
+  background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  padding: 1.5rem;
+  color: #f3f3f7;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease;
+}
+
+.tile:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.2);
+}
+
+
+.tile__head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: .75rem;
+}
+
+.tile__ring {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: conic-gradient(from 180deg, #8b5cf6, #60a5fa, #8b5cf6);
+  box-shadow: 0 0 14px rgba(139,92,246,.4);
+}
+
+.tile__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.tile__subtitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(235,235,245,.85);
+}
+
+.tile__blurb {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  color: rgba(235,235,245,.8);
+  line-height: 1.5;
+}
+
+.tile__tags {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: linear-gradient(90deg, rgba(184,146,255,.15), rgba(96,165,250,.15));
+  color: #ececf3;
+}

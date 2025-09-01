@@ -1,0 +1,193 @@
+
+:root {
+  --psw-radius: 14px;
+  --psw-gap: 16px;
+
+  --psw-bg: #0f1115;
+  --psw-elev: #12151c;
+  --psw-text: #e8eaf1;
+  --psw-dim: rgba(235,235,245,.75);
+
+  --psw-border: rgba(255,255,255,.12);
+  --psw-border-strong: rgba(255,255,255,.2);
+
+  --psw-chip1: rgba(184,146,255,.16);
+  --psw-chip2: rgba(96,165,250,.16);
+
+  --psw-shadow: 0 10px 26px rgba(0,0,0,.35);
+  --psw-shadow-hover: 0 16px 36px rgba(0,0,0,.45);
+
+  --psw-heading-grad: linear-gradient(180deg, #c084fc99, #8b5cf699, #38bdf899);
+  --psw-cta-grad: linear-gradient(90deg, #8b5cf6, #a855f7, #38bdf8);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --psw-bg: #fff;
+    --psw-elev: #fbfbfd;
+    --psw-text: #0c1220;
+    --psw-dim: #4a5568;
+    --psw-border: rgba(0,0,0,.12);
+    --psw-border-strong: rgba(0,0,0,.22);
+    --psw-shadow: 0 10px 24px rgba(0,0,0,.12);
+    --psw-shadow-hover: 0 16px 32px rgba(0,0,0,.16);
+  }
+}
+
+
+.ps-wrap {
+  padding: 3rem 0 2.5rem;
+  background: var(--psw-bg);
+  color: var(--psw-text);
+}
+
+.ps-head {
+  max-width: 1200px;
+  margin: 0 auto 1.25rem;
+  padding: 0 1.25rem;
+  text-align: center;
+}
+
+.ps-titleH {
+  margin: 0 0 .6rem;
+  font-weight: 900;
+  text-align: center;
+  font-size: 2.5rem;   
+  background: linear-gradient(180deg, #c084fc99, #8b5cf699, #38bdf899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.ps-sub {
+  margin: 0;
+  color: var(--psw-dim);
+  font-size: 1rem;
+}
+
+
+.ps-bleed {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding-inline: 2rem;
+}
+
+
+.ps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--psw-gap);
+  align-items: stretch;
+}
+
+@media (max-width: 1280px) {
+  .ps-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .ps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .ps-grid { grid-template-columns: 1fr; }
+  .ps-bleed { padding-inline: 1rem; }
+}
+
+
+.ps-card {
+  display: grid;
+  grid-template-rows: 132px auto; 
+  border: 1px solid var(--psw-border);
+  background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border-radius: var(--psw-radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--psw-shadow);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.ps-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--psw-shadow-hover);
+  border-color: var(--psw-border-strong);
+}
+
+
+.ps-media { position: relative; }
+.ps-media img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.ps-mask {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.18) 100%);
+}
+
+
+.ps-body {
+  padding: 12px 12px 14px;
+  display: grid;
+  gap: 8px;
+}
+.ps-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: .98rem;
+}
+.ps-desc {
+  margin: 0;
+  color: rgba(235,235,245,.85);
+  font-size: .9rem;
+  line-height: 1.38;
+}
+
+
+.ps-tags {
+  display: flex;
+  gap: .38rem;
+  flex-wrap: wrap;
+}
+.ps-tag {
+  font-size: .7rem;
+  font-weight: 700;
+  padding: .22rem .56rem;
+  border-radius: 999px;
+  color: #ececf3;
+  border: 1px solid var(--psw-border-strong);
+  background: linear-gradient(90deg, var(--psw-chip1), var(--psw-chip2));
+  user-select: none;
+}
+
+
+.ps-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+.ps-more {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  padding: .78rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: .98rem;
+  color: #fff;
+  background: var(--psw-cta-grad);
+  box-shadow: 0 10px 24px rgba(104,80,200,.35);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.ps-more:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 14px 32px rgba(104,80,200,.45);
+}
+.ps-more:active {
+  transform: translateY(0);
+  filter: brightness(.98);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-card, .ps-more { transition: none; }
+  .ps-card:hover { transform: none; }
+}
