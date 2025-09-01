@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
-
+import Image from "next/image";
 const TILE_H = 'h-[320px] md:h-[360px]'; 
 
 function useReveal() {
@@ -27,21 +27,28 @@ function Tag({ children }) {
   );
 }
 
+
+
 function ImageCard({ cover, alt }) {
   const onErr = (e) => {
-
     e.currentTarget.style.display = 'none';
-    e.currentTarget.parentElement?.classList.add('bg-[radial-gradient(circle_at_30%_20%,rgba(139,92,246,.25),transparent_40%),radial-gradient(circle_at_70%_80%,rgba(56,189,248,.25),transparent_40%)]');
+    e.currentTarget.parentElement?.classList.add(
+      'bg-[radial-gradient(circle_at_30%_20%,rgba(139,92,246,.25),transparent_40%),radial-gradient(circle_at_70%_80%,rgba(56,189,248,.25),transparent_40%)]'
+    );
   };
+
   return (
     <div className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] shadow-[0_12px_30px_rgba(0,0,0,0.35)] ${TILE_H}`}>
-      <img
+      <Image
         src={cover}
         alt={alt ?? ''}
-        onError={onErr}
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
         className="absolute inset-0 h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-[1.03]"
-        loading="lazy"
+        onError={onErr}
+        priority={false}
       />
+
       {}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_0%,rgba(0,0,0,.25),transparent_70%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent" />
@@ -60,6 +67,7 @@ function ImageCard({ cover, alt }) {
     </div>
   );
 }
+
 
 function DescriptionCard({ p }) {
   

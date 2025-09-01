@@ -80,15 +80,17 @@ function SchoolCard({ s }) {
     <article className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] shadow-[0_12px_30px_rgba(0,0,0,0.35)]">
       {/* Banner */}
       <div className="relative h-44 md:h-56 overflow-hidden">
-        {s.banner && (
-          <img
-            src={s.banner}
-            alt=""
-            aria-hidden="true"
-            className="h-full w-full object-cover opacity-40 transition-transform duration-500 group-hover:scale-[1.03]"
-            loading="lazy"
-          />
-        )}
+        { s.banner && (
+  <Image
+    src={s.banner}
+    alt={`${s.name} banner`}
+    fill
+    priority={false}
+    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+    className="object-cover opacity-40 transition-transform duration-500 group-hover:scale-[1.03]"
+  />
+)}
+
         {/* overlays for readability */}
         <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_0%,rgba(0,0,0,.35),transparent_70%)]" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent" />

@@ -1,25 +1,17 @@
 'use client';
 import React from "react";
+import Image from "next/image";
 
 const GH = "VarshaHemakumar";
 
 const IMPLEMENTATIONS = [
-  // {
-  //   title: "Logistic Regression",
-  //   subtitle: "Binary Classification (from first principles)",
-  //   blurb:
-  //     "Sigmoid + cross-entropy + gradient descent implemented by hand to study optimization and convergence.",
-  //   href: `https://github.com/${GH}/logistic-regression-from-scratch`,
-  //   img: `/images/log.jpeg`, // put your image in public/images/
-  //   tags: ["Python", "NumPy"],
-  // },
   {
     title: "Autoencoder for Anomaly Detection",
     subtitle: "Time-Series Reconstruction",
     blurb:
       "Encoder–decoder trained to minimize reconstruction error; thresholding used for anomaly scoring and alerts.",
     href: `https://github.com/${GH}/Autoencoder-Based-Anomaly-Detection-for-Time-Series-Data`,
-    img: `/images/ad.jpeg`,
+    img: `/Images/ad.jpeg`,  
     tags: ["PyTorch", "Python"],
   },
   {
@@ -28,7 +20,7 @@ const IMPLEMENTATIONS = [
     blurb:
       "Scaled dot-product attention, positional encoding, encoder blocks, and the full training loop written by hand.",
     href: `https://github.com/${GH}/LightAttention-Transformer-from-Scratch`,
-    img: `/images/transformer.jpeg`,
+    img: `/Images/transformer.jpeg`,  
     tags: ["PyTorch", "Python"],
   },
 ];
@@ -42,13 +34,20 @@ function Tile({ item, reverse = false }) {
       rel="noopener noreferrer"
       aria-label={`${item.title} — open GitHub repo`}
     >
-      {/* Image */}
+      {}
       <div className="f-thumb">
-        <img src={item.img} alt="" loading="lazy" />
+        <Image
+          src={item.img}
+          alt={item.title}
+          fill
+          sizes="(max-width: 860px) 92vw, 36vw"
+          style={{ objectFit: "cover" }}
+          priority={false}
+        />
         <div className="f-thumbMask" />
       </div>
 
-      {/* Body */}
+      {}
       <div className="f-body">
         <div className="f-titles">
           <h3 className="f-title">{item.title}</h3>
@@ -73,7 +72,7 @@ function Tile({ item, reverse = false }) {
           display: flex;
           flex-direction: row;
           align-items: stretch;
-          min-width: clamp(520px, 52vw, 760px); /* smaller width */
+          min-width: clamp(520px, 52vw, 760px);
           max-width: 760px;
           border-radius: 18px;
           overflow: hidden;
@@ -95,17 +94,9 @@ function Tile({ item, reverse = false }) {
         .f-thumb {
           position: relative;
           flex: 0 0 36%;
-          min-height: 170px; /* reduced height */
+          min-height: 170px;
           background: #0a0c11;
           overflow: hidden;
-        }
-        .f-thumb img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
         }
         .f-thumbMask {
           position: absolute;
@@ -117,7 +108,7 @@ function Tile({ item, reverse = false }) {
         /* --- Body --- */
         .f-body {
           flex: 1 1 auto;
-          padding: 1rem 1.2rem 1rem; /* tighter padding */
+          padding: 1rem 1.2rem 1rem;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -126,7 +117,7 @@ function Tile({ item, reverse = false }) {
         .f-title {
           margin: 0;
           font-weight: 900;
-          font-size: clamp(1.1rem, 1.8vw, 1.6rem); /* smaller font */
+          font-size: clamp(1.1rem, 1.8vw, 1.6rem);
         }
         .f-sub {
           margin: 0.2rem 0 0.45rem;
@@ -159,8 +150,8 @@ function Tile({ item, reverse = false }) {
           .f-tile--reverse { flex-direction: column; }
           .f-thumb {
             flex-basis: auto;
-            min-height: 150px; /* reduced from 200 */
-            max-height: 250px; /* reduced from 320 */
+            min-height: 150px;
+            max-height: 250px;
           }
           .f-body { padding: 0.9rem 1rem; }
           .f-tile { min-width: 92vw; }
@@ -202,22 +193,18 @@ export default function FoundationalStrip({ items = IMPLEMENTATIONS }) {
           text-align: center;
         }
         .f-titleH {
-        text-align: center;
-        font-size: 2.5rem; /* fixed size */
-        margin-bottom: 1rem;
-        font-weight: 400;
-
-        background: linear-gradient(180deg, #c084fc99, #8b5cf699, #38bdf899);
-       -webkit-background-clip: text;
-       -webkit-text-fill-color: transparent;
+          text-align: center;
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          font-weight: 400;
+          background: linear-gradient(180deg, #c084fc99, #8b5cf699, #38bdf899);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
-
         .f-desc {
           color: rgba(235,235,245,0.75);
           font-size: 1rem;
         }
-
-        /* not full width anymore */
         .f-bleed {
           max-width: 1800px;
           margin: 0 auto;
@@ -235,7 +222,7 @@ export default function FoundationalStrip({ items = IMPLEMENTATIONS }) {
         }
         .f-track {
           display: flex;
-          gap: 2rem; /* smaller gap */
+          gap: 2rem;
           padding: 0 1.5rem 1rem;
           width: max-content;
           animation: f-scroll 42s linear infinite;
